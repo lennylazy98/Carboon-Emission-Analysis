@@ -136,3 +136,50 @@ ORDER BY 1
 
 #7 Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
 
+
+SQL: 
+
+SELECT industry_group,
+	   sum(case when year = 2013 then carbon_footprint_pcf end) as co2_emsission_2013,
+	   sum(case when year = 2017 then carbon_footprint_pcf end) as co2_emission_2017
+FROM product_emissions as t1
+	join industry_groups as t4 on t1.industry_group_id = t4.id
+GROUP BY 1
+ORDER BY 2 desc
+
+
+INSIGHT:
+| industry_group|co2_emsission_2013| co2_emission_2017| 
+| ------------------------------------------------: | ------------------: | -----------------: | 
+| Materials| 200513 | 213137| 
+| Automobiles & Components| 130189 | [NULL] | 
+| Technology Hardware & Equipment | 61100| 27592 | 
+| Capital Goods| 60190| 94949| 
+| "Pharmaceuticals, Biotechnology & Life Sciences" | 32271| [NULL]             | 
+| Media| 9645| [NULL]| 
+| "Food, Beverage & Tobacco"| 4995| 3162  | 
+| Consumer Durables & Apparel | 2867 | [NULL]  |
+| Commercial & Professional Services| 1157| 741 | 
+| Energy | 750 | [NULL]| 
+| Utilities| 122 | [NULL] | 
+| Telecommunication Services | 52| [NULL]| 
+| Software & Services                  | 6 | 690 | 
+| Household & Personal Products | 0 | [NULL]| 
+| "Mining - Iron, Aluminum, Other Metals"| [NULL] | [NULL]|
+| Gas Utilities                                        | [NULL] | [NULL]  | 
+| Containers & Packaging   | [NULL]   | [NULL]
+ | 
+| "Textiles, Apparel, Footwear and Luxury Goods"      | [NULL]| [NULL] |
+| Electrical Equipment and Machinery | [NULL] | [NULL] | 
+| "Consumer Durables, Household and Personal Products"  | [NULL] | [NULL]| 
+| Tires | [NULL]  | [NULL]  | 
+| Retailing  | [NULL] | [NULL]   | 
+| Food & Beverage Processing | [NULL] | [NULL] | 
+| Tobacco  | [NULL]| [NULL] | 
+| Chemicals | [NULL] | [NULL] | 
+| Semiconductors & Semiconductor Equipment| [NULL]| [NULL] | 
+| "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber"| [NULL]| [NULL]| 
+| Food & Staples Retailing | [NULL] | [NULL] | 
+| Trading Companies & Distributors and Commercial Services & Supplies   | [NULL]   | [NULL]    | 
+| Semiconductors & Semiconductors Equipment| [NULL] | [NULL]             | 
+
